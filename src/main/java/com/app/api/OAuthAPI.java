@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
+
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
-import java.awt.Desktop;
+
 import com.app.controller.AuthController;
 import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl;
 import com.google.api.client.auth.oauth2.Credential;
@@ -22,6 +22,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.people.v1.PeopleServiceScopes;
+
 
 import spark.Response;
 public class OAuthAPI {
@@ -34,6 +36,8 @@ public class OAuthAPI {
     public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         SCOPES.add(GmailScopes.GMAIL_SEND);
         SCOPES.add(SheetsScopes.SPREADSHEETS);
+        SCOPES.add(PeopleServiceScopes.USERINFO_PROFILE);
+        SCOPES.add(PeopleServiceScopes.USERINFO_EMAIL);
         InputStream in = AuthController.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
@@ -52,6 +56,8 @@ public class OAuthAPI {
 public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,Response response) throws IOException {
     SCOPES.add(GmailScopes.GMAIL_SEND);
     SCOPES.add(SheetsScopes.SPREADSHEETS);
+    SCOPES.add(PeopleServiceScopes.USERINFO_PROFILE);
+    SCOPES.add(PeopleServiceScopes.USERINFO_EMAIL);
     InputStream in = AuthController.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
   if (in == null) {
       throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);

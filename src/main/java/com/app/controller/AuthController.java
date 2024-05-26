@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
@@ -17,6 +18,11 @@ public class AuthController {
         return "";
     }
     public static String logOut(Request request,Response response){
+         File f = new File("tokens/StoredCredential");
+         if(f.exists()){
+            f.delete();
+            response.redirect("/");
+         }
         return "";
     }
 }

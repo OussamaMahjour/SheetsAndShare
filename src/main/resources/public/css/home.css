@@ -1,0 +1,129 @@
+.home-content{
+    height: 90%;
+    width: 80%;
+  
+}
+.logo-content{
+    height: 65%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    background-color: var(--primary);
+}
+.spreadsheet-home{
+    height:30% ;
+    background-color: var(--primary);
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.right-side-content{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    background-color: var(--primary);
+
+}
+.img-row{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-row img{
+    width: 80%;
+}
+.dev-row{
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.dev-row table,th,td{
+    background-color: var(--primary) !important;
+}
+.dev-row a{
+     height: 1.7rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 400;
+   
+   background-color: var(--link);
+    color:var(--text-dark);
+    white-space: nowrap;    
+    overflow: hidden;      
+    text-overflow: ellipsis; 
+    vertical-align: top;   
+    padding-left: 1rem; /* */
+    display: inline-block;  
+         
+    white-space: nowrap;    
+    overflow: hidden;      
+    text-overflow: ellipsis; 
+    vertical-align: center;
+    
+}
+.spreadsheet-home .row-link{
+    height: 45%;
+    
+}
+.spreadsheet-home .row-link input{
+    width: 75%;
+    border: 2px solid var(--text-dark);
+    color: var(--text-dark);
+    height: 3rem;
+    border-radius: 10px;
+    outline: none;
+}
+
+.spreadsheet-home .row-link button{
+    width: 20%;
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid var(--text-dark);
+
+
+}
+.spreadsheet-home .row-or{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+}
+.spreadsheet-home .row-csv{
+    height: 45%;
+    
+}
+.spreadsheet-home .row-csv button{
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid var(--text-dark);
+    width: 20%;
+}
+.spreadsheet-home .row-or hr{
+    width: 100px;
+    color: var(--text-dark);
+    
+    
+}
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--text-dark);
+}
+.separator:not(:empty)::before {
+    margin-right: 10px;
+}
+.separator:not(:empty)::after {
+    margin-left: 10px;
+}
