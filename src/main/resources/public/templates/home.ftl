@@ -8,9 +8,9 @@
 
 
 <div class="container home-content row">
-    <div class="col-9 ">
-    <div class="row m-1 mb-3 rounded logo-content  overflow-hidden">
-            <div class="row img-row p-5 ">
+    <div class="col-9 row gap-3">
+    <div class="row  rounded logo-content  overflow-hidden">
+            <div class="row img-row  ">
                 <img src="/imgs/home-logo.png" alt="Sheets&Share">
             </div>
             <div class="row dev-row px-3 ps-5 ">
@@ -42,7 +42,7 @@
             
             </div>
     </div>
-    <div class="row m-1 rounded spreadsheet-home overflow-hidden d-flex justify-content-center ">
+    <div class="row  rounded spreadsheet-home overflow-hidden d-flex justify-content-center ">
         <div class="row row-link d-flex justify-content-between align-items-center">
             <input name="spreadsheetId"placeholder="ID...">
             <button >Import</button>
@@ -54,7 +54,7 @@
     
     </div>
     </div>
-    <div class="col-2 m-1 mb-3 rounded right-side-content"></div>
+    <div class="col-2  rounded right-side-content"></div>
 
 </div>
 <script src="/js/home.js"></script>

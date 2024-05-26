@@ -61,6 +61,7 @@ body{
     justify-content: center;
     align-items: start;
     overflow: hidden;
+   
 }
 .profile-email h4{
     width: 100%;
@@ -68,10 +69,15 @@ body{
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 400;
-    display: flex;
-    justify-content: center;
+    text-align: center;
     background-color: var(--link);
     color:var(--text-light);
+    display: inline-block;  
+         
+    white-space: nowrap;    
+    overflow: hidden;      
+    text-overflow: ellipsis; 
+    vertical-align: center;
 }
 
 .menu{

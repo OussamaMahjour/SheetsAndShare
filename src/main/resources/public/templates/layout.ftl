@@ -16,7 +16,7 @@
                 <img src="<#if profile??>${profile}<#else>email.profile@gmail.com</#if>" class="rounded-circle" alt="...">
               </div>
               <div class="profile-email ">
-                <h4 class="py-1  overflow=hidden"> <#if email??>${email}<#else>email.profile@gmail.com</#if></h4>
+                <h4 class="py-1 ps-2 overflow=hidden"> <#if email??>${email}<#else>email.profile@gmail.com</#if></h4>
               </div>
 
         </div>
@@ -49,8 +49,8 @@
       
             </ul>
         </div>
-        <div class="exit pt-3" >
-          <a href="/logout" class="text-white text-decoration-none px-5 "> 
+        <div class="exit  d-flex justify-content-center " >
+          <a href="/logout" class="text-white text-decoration-none  "> 
             <i class="fa-solid  fa-arrow-right-from-bracket mx-2"></i>
             Log Out
           </a>
