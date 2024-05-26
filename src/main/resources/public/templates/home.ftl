@@ -54,7 +54,7 @@
     
     </div>
     </div>
-    <div class="col-2  rounded right-side-content"></div>
+    <div class="col-3  rounded right-side-content"></div>
 
 </div>
 <script src="/js/home.js"></script>
