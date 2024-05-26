@@ -44,8 +44,8 @@
     </div>
     <div class="row  rounded spreadsheet-home overflow-hidden d-flex justify-content-center ">
         <div class="row row-link d-flex justify-content-between align-items-center">
-            <input name="spreadsheetId"placeholder="ID...">
-            <button >Import</button>
+            <input name="spreadsheetId" class="sheet-id"placeholder="ID...">
+            <button class="import-sheet-link" >Import</button>
         </div>
         <div class="row row-or px-5"> <div class="separator">or</div></div>
         <div class="row row-csv d-flex justify-content-center align-items-center ">

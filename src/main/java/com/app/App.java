@@ -5,6 +5,7 @@ import spark.Spark;
 import java.io.File;
 
 import com.app.controller.AuthController;
+import com.app.controller.EmailController;
 import com.app.controller.HomeController;
 import com.app.controller.SpreadSheetController;
 import com.app.service.SpreadSheetService;
@@ -33,6 +34,10 @@ public class App extends Spark
         get("/",HomeController::index);
         get("/login",AuthController::login);
         get("/logout",AuthController::logOut);
-        get("/spreadSheet",SpreadSheetController::index);
+        get("/spreadsheet",SpreadSheetController::index);
+        get("/addSpreadSheetById",SpreadSheetController::addSpreadSheetById);
+        get("/email",EmailController::index);
+        get("/tables",SpreadSheetController::tables);
+    
     }
 }

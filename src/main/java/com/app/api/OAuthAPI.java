@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.app.controller.AuthController;
+import com.app.model.Repository;
 import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -24,7 +25,7 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.people.v1.PeopleServiceScopes;
 
-
+import spark.Request;
 import spark.Response;
 public class OAuthAPI {
         private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
@@ -53,7 +54,7 @@ public class OAuthAPI {
         Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
         return credential;
 }
-public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,Response response) throws IOException {
+public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,Response response,Request request) throws IOException {
     SCOPES.add(GmailScopes.GMAIL_SEND);
     SCOPES.add(SheetsScopes.SPREADSHEETS);
     SCOPES.add(PeopleServiceScopes.USERINFO_PROFILE);
@@ -69,7 +70,7 @@ public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,R
     .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
     .setAccessType("offline")
     .build();
-  LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).setCallbackPath("/auth").build();
+  LocalServerReceiver receiver= new LocalServerReceiver.Builder().setPort(8888).setCallbackPath("/auth").build();
   Credential credential = new AuthorizationCodeInstalledApp(flow, receiver){
       @Override
       protected void onAuthorization(AuthorizationCodeRequestUrl authorizationUrl) {
@@ -81,7 +82,10 @@ public  static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT,R
               throw new RuntimeException("Failed to open browser", e);
           }
       }
+      
   }.authorize("user");
+ 
   return credential;
 }
+
 }
