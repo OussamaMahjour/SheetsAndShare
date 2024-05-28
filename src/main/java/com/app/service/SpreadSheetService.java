@@ -43,7 +43,7 @@ public class SpreadSheetService {
         Sheets service = SpreadSheetAPI.getService();
       
         SpreadSheet spreadSheet = new SpreadSheet();
-        spreadSheet.setSpreadSheet(service.spreadsheets().get(id).execute());
+        spreadSheet.setSpreadsheet(service.spreadsheets().get(id).execute());
         Map<String,Object> dataRange = new HashMap<>();
         for(Sheet sheet :spreadSheet.getSpreadsheet().getSheets()){
             String sheetName = sheet.getProperties().getTitle();

@@ -8,6 +8,7 @@ import com.app.controller.AuthController;
 import com.app.controller.EmailController;
 import com.app.controller.HomeController;
 import com.app.controller.SpreadSheetController;
+import com.app.controller.TableController;
 import com.app.service.SpreadSheetService;
 /**
  * Hello world!
@@ -37,7 +38,8 @@ public class App extends Spark
         get("/spreadsheet",SpreadSheetController::index);
         get("/addSpreadSheetById",SpreadSheetController::addSpreadSheetById);
         get("/email",EmailController::index);
-        get("/tables",SpreadSheetController::tables);
+        get("/creatTable",TableController::createTable);
+        get("/tables",TableController::index);
     
     }
 }

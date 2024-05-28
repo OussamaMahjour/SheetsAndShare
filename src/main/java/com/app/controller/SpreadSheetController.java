@@ -44,8 +44,6 @@ public class SpreadSheetController extends Controller {
         response.status(200);
         return response;
     }
-    public static String tables(Request request ,Response response) throws IOException,GeneralSecurityException{
-        return render("tables.ftl");
-
-    }
+    
+   
 }

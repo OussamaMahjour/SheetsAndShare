@@ -23,7 +23,7 @@ public class SpreadSheet {
     public Map<String,Object> getValues(){
         return this.values;
     }
-    public SpreadSheet setSpreadSheet(Spreadsheet spreadsheet){
+    public SpreadSheet setSpreadsheet(Spreadsheet spreadsheet){
         this.spreadsheet = spreadsheet;
         this.name = spreadsheet.getProperties().getTitle();
         this.id = spreadsheet.getSpreadsheetId();
