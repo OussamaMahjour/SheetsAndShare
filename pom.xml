@@ -2,17 +2,35 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.app</groupId>
-  <artifactId>SheetAndShare</artifactId>
+  <artifactId>SheetsAndShare</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>SheetAndShare</name>
+  <name>SheetsAndShare</name>
   <url>http://maven.apache.org</url>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+          <groupId>com.google.cloud</groupId>
+          <artifactId>libraries-bom</artifactId>
+          <version>  26.40.0</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>7.0.0</version>
     </dependency>
     <dependency>
       <groupId>com.sparkjava</groupId>
@@ -60,6 +78,11 @@
       <version>1.11.0</version>
     </dependency>
     <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-debug-tools</artifactId>
+      <version>0.5</version>
+    </dependency>
+    <dependency>
       <groupId>com.google.apis</groupId>
       <artifactId>google-api-services-sheets</artifactId>
       <version>v4-rev20220927-2.0.0</version>
@@ -69,8 +92,21 @@
       <artifactId>google-api-services-people</artifactId>
       <version>v1-rev537-1.25.0</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-datastore</artifactId>
+      <version>2.20.1</version>
+    </dependency>
+   <dependency>
+        <groupId>io.github.cdimascio</groupId>
+        <artifactId>dotenv-java</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+
   </dependencies>
-  <build>
+     <build>
     <plugins>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -101,10 +137,17 @@
           <mainClass>com.app.App</mainClass>
           <arguments>
             <argument>-jar</argument>
-            <argument>${app.stage.stagingDirectory}/SheetAndShare-1.0-jar-with-dependencies.jar</argument>
+            <argument>${project.build.directory}/SheetAndShare-1.0-jar-with-dependencies.jar</argument>
           </arguments>
         </configuration>
       </plugin>
+       <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.3.7.v20160115</version>
+      </plugin>
+     
+
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
@@ -118,4 +161,3 @@
     </plugins>
   </build>
 </project>
-

@@ -1,12 +1,7 @@
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded",function(e){
     let login = document.querySelector(".glowing-btn");
-    login.addEventListener("click",function(e){
-        console.log("test");
-        window.open("/login");
+
+    login.addEventListener('click',function(){
+        window.location.href="/login";
     })
-
-
-
-
-
 })
