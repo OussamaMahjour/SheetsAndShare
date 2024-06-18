@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.app.model.Column;
 import com.app.model.Spreadsheet;
@@ -61,5 +62,29 @@ public class TableService {
 
             return table;
 
+        }
+        public Table creatTable(Request request,String table_name,List<List<String>> data){
+
+            Table table = new Table();
+            table.setName(table_name);
+            table.setId(UUID.randomUUID().toString());
+            User user = request.session().attribute("user");
+            Repository repo = user.getRepository();
+            List<Column> columns = new ArrayList<>();
+            for(int i=0;i<data.get(0).size();i++){
+                Column column = new Column();
+                column.setName(data.get(0).get(i));
+                column.setEndRow(data.size());
+                column.setData(new ArrayList<>());
+                columns.add(column);
+            }
+            for(int i =1 ;i<data.size();i++){
+                for(int j=0;j<data.get(i).size();j++){
+                    columns.get(j).getData().add(data.get(i).get(j));
+                }
+            }
+            table.setData(columns);
+            repo.addTable(table);
+            return table;
         }
 }

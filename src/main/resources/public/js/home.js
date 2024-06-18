@@ -18,6 +18,16 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         )
     });
+
+
+    document.querySelector(".importCsv").addEventListener("click",function(e){
+            document.querySelector(".CSV-file").click();
+    });
+    document.querySelector(".CSV-file").addEventListener("change",function(e){
+            load();
+            document.querySelector(".csv-form").submit();
+            stopLoad();
+        })
     function load(){
         document.querySelector(".modal-container").classList.remove("d-none");
         document.querySelector(".loader-container").classList.remove("d-none");

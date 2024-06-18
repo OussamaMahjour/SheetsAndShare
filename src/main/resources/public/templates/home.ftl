@@ -51,10 +51,15 @@
                Please choose a valid id .
             </div>
         </div>
-        <div class="row row-or px-5"> <div class="separator">or</div></div>
+        <div class="row row-or px-5"> <div class="separator">or</div></div> 
+        <form action="/table/csvTable" class="csv-form" method="post" enctype='multipart/form-data'>
         <div class="row row-csv d-flex justify-content-center align-items-center ">
-                <button >Import from csv</button>
-        </div>
+           
+                <button type="button" class="importCsv" >Import from csv</button>
+                <input type="file" class="d-none CSV-file" name="csvFile">
+           
+        </div> 
+        </form>
     
     </div>
     </div>

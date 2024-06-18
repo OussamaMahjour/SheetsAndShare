@@ -1,11 +1,22 @@
 package com.app.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 
 import com.app.model.Column;
 import com.app.service.TableService;
 import com.google.inject.Inject;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
 
 import spark.Request;
 import spark.Response;
@@ -26,6 +37,7 @@ public class TableController extends Controller{
         Spark.path("/table",()->{
             Spark.get("",this::index);
             Spark.post("/creatTable",this::creatTable);
+            Spark.post("/csvTable",this::csvTable);
         });
         
     }
@@ -65,4 +77,25 @@ public class TableController extends Controller{
         return response;
 
     }
+  
+    public Response csvTable(Request request,Response response) throws IOException,ServletException,CsvValidationException{
+        request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
+        try (InputStream is = request.raw().getPart("csvFile").getInputStream()) {
+            List<List<String>> list = new ArrayList<>();    
+            CSVReader csvReader = new CSVReader(new InputStreamReader(is));
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                
+                list.add(Arrays.asList(line));
+            }
+            is.close();
+            csvReader.close();
+
+            this.service.creatTable(request, "testTable", list);
+            response.redirect("/table");
+            
+            return response;
+        }
+    }
+    
 }
