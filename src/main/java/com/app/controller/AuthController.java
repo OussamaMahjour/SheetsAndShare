@@ -5,10 +5,9 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import com.app.config.AppConfig;
 import com.app.exeption.LoginException;
+import com.app.model.User;
+import com.app.service.UserService;
 import com.app.util.GoogleUtilApi;
-import com.google.api.services.people.v1.PeopleService;
-import com.google.api.services.people.v1.PeopleService.People;
-import com.google.api.services.people.v1.model.Person;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import spark.Request;
@@ -22,14 +21,17 @@ public class AuthController extends Controller {
         Spark.get("/",this::index);
         Spark.get("/callback",this::auth);
         Spark.get("/login",this::login);
+        Spark.get("logOut",this::logOut);
 
     } 
 
 
     @Override
     public String index(Request request,Response response){
-
-        return render(request, "login.html");
+       if(request.session().attribute("user")!=null){
+        return render(request,"home.ftl");
+      } 
+        return render(request, "login.ftl");
 
     }
 
@@ -47,16 +49,27 @@ public class AuthController extends Controller {
             Injector injector = Guice.createInjector(new AppConfig());
             GoogleUtilApi googleApi = injector.getInstance(GoogleUtilApi.class);
             googleApi.setToken(code);
-
-            PeopleService service = googleApi.getPeopleService();
-             Person profile = service.people().get("people/me").setPersonFields("emailAddresses").execute();
-             String email = profile.getEmailAddresses().get(0).getValue();
-
-             return email;
-           
+            Spark.unmap("/login");
+            UserService userService = injector.getInstance(UserService.class);
+            User user = userService.creatUser(request);
+            request.session().attribute("user",user);
+            SpreadsheetController spreadsheetController= injector.getInstance(SpreadsheetController.class);
+            EmailController emailController = injector.getInstance(EmailController.class);
+            TableController tableController = injector.getInstance(TableController.class);
+            spreadsheetController.initRoutes();
+            emailController.initRoutes();
+            tableController.initRoutes();
           }
         response.redirect("/");
         return "connected you may now close this window";
         
+    }
+
+    public String logOut(Request request,Response response){
+        request.session().removeAttribute("user");
+        response.redirect("/");
+        Spark.get("/login",this::login);
+
+        return "";
     }
 }

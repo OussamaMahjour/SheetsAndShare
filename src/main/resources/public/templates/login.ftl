@@ -19,7 +19,7 @@
     
 
 
-<button type="button" href="/login" class='glowing-btn'><span class='glowing-txt'><i class="fa-brands fa-google"></i> <span class='faulty-letter'>Log</span>in</span></button>
+<button type="button"  class='glowing-btn'><span class='glowing-txt'><i class="fa-brands fa-google"></i> <span class='faulty-letter'>Log</span>in</span></button>
 
  
 

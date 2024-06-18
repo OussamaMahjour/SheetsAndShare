@@ -1,0 +1,108 @@
+.add-table{
+    position:absolute;
+    right: 10vw;
+    bottom: 15vh;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    background-color: var(--text-dark);
+    outline: none;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+
+}
+.add-table-container{
+    position: absolute !important;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-table-container-close{
+    display: none;
+}
+.add-table-modal{
+    background-color: white;
+    border: 1px solid var(--text-dark);
+    width: 70%;
+    height:80% ;
+    border-radius: 10px;
+    overflow: hidden;
+   
+}
+.row-link input{
+    width: 75%;
+    border: 2px solid var(--text-dark);
+    color: var(--text-dark);
+    height: 3rem;
+    border-radius: 10px;
+    outline: none;
+}
+
+.row-link button{
+   
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid var(--text-dark);
+
+
+}
+.tables-container{
+    height: 90%;
+    background-color: white;
+
+}
+.tables-container table{
+    width: 100%;
+}
+.drop-down{
+    transition: 0.3s ease !important;
+    cursor: pointer;
+}
+.close{
+    display: inline-block;
+    overflow: hidden;
+    height: 0 !important;
+}
+.select-spreadsheet{
+    border-end-end-radius: 10px;
+    border-top-right-radius: 10px;
+    
+    background-color: rgb(185, 185, 185);
+}
+.table-name{
+    border-radius: 10px;
+
+}
+.add-column{
+    background-color:var(--text-dark) ;
+    color: var(--text-light);
+}
+.add-column:hover{
+    background-color:var(--text-dark) ;
+    color: var(--text-light);
+}
+.select-sheet{
+    border-end-end-radius: 10px;
+    border-top-right-radius: 10px;
+    
+    background-color: rgb(185, 185, 185);
+}
+.create-table{
+    background-color:var(--text-dark) ;
+    color: var(--text-light);
+}
+.create-table:hover{
+    background-color:var(--text-dark) ;
+    color: var(--text-light);
+}
